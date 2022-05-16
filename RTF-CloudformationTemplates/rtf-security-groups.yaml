@@ -53,6 +53,7 @@ Resources:
           Value: !Sub '${EnvironmentName}-Exercises'
   LoadBalancerSecurityGroupIngress1:
     Type: AWS::EC2::SecurityGroupIngress
+    DeletionPolicy: Delete
     Properties: 
       GroupId:
           Fn::GetAtt:

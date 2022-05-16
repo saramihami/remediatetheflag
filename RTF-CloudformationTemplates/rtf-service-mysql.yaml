@@ -55,6 +55,7 @@ Parameters:
 Resources:
   Service:
     Type: 'AWS::ECS::Service'
+    DeletionPolicy: Delete
     Properties:
       Cluster: !Ref Cluster
       DesiredCount: !Ref DesiredCount
