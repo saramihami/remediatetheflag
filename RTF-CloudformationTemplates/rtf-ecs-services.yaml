@@ -89,6 +89,7 @@ Mappings:
 Resources:
   ServicesECSCluster:
     Type: 'AWS::ECS::Cluster'
+    DeletionPolicy: Delete
     Properties:
       ClusterName: !Ref EnvironmentName
   ServicesAutoScalingGroup:

@@ -69,6 +69,7 @@
   Resources:
     Service:
       Type: 'AWS::ECS::Service'
+      DeletionPolicy: Delete
       DependsOn: ListenerRuleHTTP
       Properties:
         Cluster: !Ref Cluster

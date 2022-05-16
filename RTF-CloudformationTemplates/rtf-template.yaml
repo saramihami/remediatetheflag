@@ -23,7 +23,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
-            TemplateURL: https://s3-eu-west-1.amazonaws.com/rtf-public-templates/rtf-vpc.yaml
+            TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-vpc.yaml
             Parameters:
                 EnvironmentName:    RTF-VPC
                 VpcCIDR:            10.0.0.0/16
@@ -35,7 +35,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
-            TemplateURL: https://s3-eu-west-1.amazonaws.com/rtf-public-templates/rtf-security-groups.yaml
+            TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-security-groups.yaml
             Parameters: 
                 EnvironmentName: RTF-SecurityGroups
                 VPC: !GetAtt VPC.Outputs.VPC
@@ -43,7 +43,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
-            TemplateURL: https://s3-eu-west-1.amazonaws.com/rtf-public-templates/rtf-load-balancers.yaml
+            TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-load-balancers.yaml
             Parameters:
                 EnvironmentName: RTF-ALB
                 VPC: !GetAtt VPC.Outputs.VPC
@@ -55,7 +55,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
-            TemplateURL: https://s3-eu-west-1.amazonaws.com/rtf-public-templates/rtf-ecs-services.yaml
+            TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-ecs-services.yaml
             Parameters:
                 EnvironmentName: RTF-Services
                 #Choose EC2 Instance Type to run RTF-Services
@@ -72,7 +72,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
-            TemplateURL: https://s3-eu-west-1.amazonaws.com/rtf-public-templates/rtf-ecs-exercises.yaml
+            TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-ecs-exercises.yaml
             Parameters:
                 EnvironmentName: RTF-Exercises
                 #Choose EC2 Instance Type to run RTF-Exercises
@@ -87,7 +87,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
-            TemplateURL: https://s3-eu-west-1.amazonaws.com/rtf-public-templates/rtf-service-mysql.yaml
+            TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-service-mysql.yaml
             Parameters:
                 VPC: !GetAtt VPC.Outputs.VPC
                 Cluster: !GetAtt ServicesECS.Outputs.Cluster
@@ -105,7 +105,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
-            TemplateURL: https://s3-eu-west-1.amazonaws.com/rtf-public-templates/rtf-service-global.yaml
+            TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-service-global.yaml
             Parameters:
                 VPC: !GetAtt VPC.Outputs.VPC
                 Cluster: !GetAtt ServicesECS.Outputs.Cluster
@@ -131,7 +131,7 @@ Resources:
         Type: AWS::CloudFormation::Stack
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
-            TemplateURL: https://s3-eu-west-1.amazonaws.com/rtf-public-templates/rtf-service-gateway.yaml
+            TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-service-gateway.yaml
             Parameters:
                 RTFMySQL: !GetAtt MysqlService.Outputs.MySQLService
                 VPC: !GetAtt VPC.Outputs.VPC
