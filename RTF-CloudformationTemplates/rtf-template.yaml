@@ -21,6 +21,7 @@ Description: >
 Resources:
     VPC:
         Type: AWS::CloudFormation::Stack
+        DeletionPolicy: Delete
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
             TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-vpc.yaml
@@ -33,6 +34,7 @@ Resources:
                 PrivateSubnet2CIDR: 10.0.192.0/18
     SecurityGroups:
         Type: AWS::CloudFormation::Stack
+        DeletionPolicy: Delete
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
             TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-security-groups.yaml
@@ -41,6 +43,7 @@ Resources:
                 VPC: !GetAtt VPC.Outputs.VPC
     ALB:
         Type: AWS::CloudFormation::Stack
+        DeletionPolicy: Delete
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
             TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-load-balancers.yaml
@@ -53,6 +56,7 @@ Resources:
                 LoadBalancerCertificateArn: arn:aws:acm:REPLACE/TLS/CERTIFICATE/ARN
     ServicesECS:
         Type: AWS::CloudFormation::Stack
+        DeletionPolicy: Delete
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
             TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-ecs-services.yaml
@@ -70,6 +74,7 @@ Resources:
                 MountPoint: efs
     ExercisesECS:
         Type: AWS::CloudFormation::Stack
+        DeletionPolicy: Delete
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
             TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-ecs-exercises.yaml
@@ -85,6 +90,7 @@ Resources:
                 Subnets: !GetAtt VPC.Outputs.PrivateSubnets
     MysqlService:
         Type: AWS::CloudFormation::Stack
+        DeletionPolicy: Delete
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
             TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-service-mysql.yaml
@@ -103,6 +109,7 @@ Resources:
                 MysqlImage: remediatetheflag/rtf-database:1.0
     GlobalService:
         Type: AWS::CloudFormation::Stack
+        DeletionPolicy: Delete
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
             TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-service-global.yaml
@@ -129,6 +136,7 @@ Resources:
                 GlobalImage: remediatetheflag/rtf-portal:1.0
     GatewayService:
         Type: AWS::CloudFormation::Stack
+        DeletionPolicy: Delete
         Properties:
             #Optionally replace PATH to S3 Repository where CloudFormation Templates were uploaded
             TemplateURL: https://raw.githubusercontent.com/saramihami/remediatetheflag/master/RTF-CloudformationTemplates/rtf-service-gateway.yaml
